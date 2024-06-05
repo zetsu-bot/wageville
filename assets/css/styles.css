@@ -249,6 +249,8 @@ a:before, a:after {
 	background-size: cover;
 	padding-bottom: 100px;
 }
+
+
 #headerwrap h1 {
 	color: #ffffff;
 	font-size: 50px;
@@ -338,11 +340,12 @@ background:#fff;
 }
 #team H4 {
 	padding-top: 10px;
-	color: #898989;
+	color: #d4d4d4;
 }
 #team p.large {
 	margin-top: 60px;
 	margin-bottom: 40px;
+	color: #bababa;
 }
 #team .fa {
 	width: 30px;
