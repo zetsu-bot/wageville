@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="webthemez">
+<title>WageVille | Solana Gaming</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="assets/css/styles.css" rel="stylesheet">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="assets/css/animate-custom.css" rel="stylesheet"> 
+<script src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> 
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #content {
+    flex: 1;
+  }
+
+  #footerwrap {
+    background-color: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+</style>
+
+</head>
+<body data-target="#navbar-main">
+<div id="navbar-main"> 
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="pull-left logo">
+          <a class="" href="index.html"><img src="assets/img/logo.png" /></a>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span> 
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+            <li><a href="index.html" class="smoothScroll">Home</a></li>
+            <li><a href="whitepaper.html" class="smoothScroll">Whitepaper</a></li>
+            <li><a href="roadmap.html" class="smoothScroll">Roadmap</a></li>
+            <li><a href="https://t.me/wagetoken" class="smoothScroll">Download</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse --> 
+    </div>
+  </div>
+</div>
+
+<!-- ==== HEADERWRAP ==== -->
+
+<div class="div-pattern2"></div>
+<!-- /headerwrap --> 
+
+<div id="content">
+  <!-- ==== SEARCH ==== -->
+  <div id="search" name="search">
+    <div class="container">
+      <div class="row">
+        <h2 class="centered">Search User</h2>
+        <div class="col-md-6 col-md-offset-3">
+          <input type="text" id="username" class="form-control" placeholder="Enter Your Solana Wallet">
+          <button id="searchBtn" class="btn btn-primary btn-block">Check</button>
+          <div id="container1" class="alert alert-success" style="display:none;">Congratulation! You are the winner!!<br/>
+            <h2>How to Claim</h2><br/>
+            <ul>
+                <li>Join Our Telegram Channel at <a href="https://t.me/wagetoken">WageVille Channel</a></li>
+                <li>Download & Play WageVille Game</li>
+                <li>in the claim button, enter this code: <span id="code"></span>    <button id="copyBtn" class="btn btn-primary btn-sm">Copy</button></li>
+                
+            </ul>
+            <br/><br/><br/></div>
+          <div id="container2" class="alert alert-danger" style="display:none;">You haven't been lucky this time. Visit our official Twitter at <a href="https://x.com/wagetoken">WageVille Twitter</a> and follow other airdrop programs.</div>
+        </div>
+      </div>
+      <!-- row --> 
+    </div>
+  </div>
+  <!-- container -->
+</div>
+
+<div id="footerwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8"> 
+          <span class="copyright">Copyright &copy; 2024. Design by <a href="https://www.wageville.online">WageVille</a></span> 
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li><a href="https://x.com/wagetoken"><i class="fa fa-twitter"></i></a> </li>
+            <li><a href="https://t.me/wagetoken"><i class="fa fa-telegram"></i></a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Bootstrap core JavaScript
+    ================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script> 
+<script type="text/javascript" src="assets/js/smoothscroll.js"></script> 
+<script type="text/javascript" src="assets/js/custom-scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+  let whitelist = [];
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load CSV file
+    Papa.parse('whitelist.csv', {
+      download: true,
+      header: true,
+      complete: function(results) {
+        whitelist = results.data;
+        console.log('Whitelist loaded:', whitelist); // Logging
+      },
+      error: function(error) {
+        console.error('Error loading CSV:', error); // Logging errors
+      }
+    });
+
+    document.getElementById('searchBtn').addEventListener('click', function() {
+      const username = document.getElementById('username').value.trim();
+      const user = whitelist.find(item => item.username === username);
+      console.log('Searching for username:', username); // Logging
+      if (user) {
+        console.log('User found:', user); // Logging
+        document.getElementById('container1').style.display = 'block';
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('code').textContent = user.code; // Menampilkan kode
+      } else {
+        console.log('User not found'); // Logging
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'block';
+      }
+    });
+  });
+</script>
+
+<script>
+  // Fungsi untuk menyalin kode
+  function copyCode() {
+    const codeElement = document.getElementById('code');
+    const code = codeElement.textContent;
+
+    // Buat elemen textarea untuk menempelkan kode
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    document.body.appendChild(textarea);
+
+    // Pilih dan salin kode
+    textarea.select();
+    document.execCommand('copy');
+
+    // Hapus elemen textarea
+    document.body.removeChild(textarea);
+
+    // Beri umpan balik kepada pengguna
+    alert('Copied Successfull!');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Tambahkan event listener ke tombol "Copy"
+    document.getElementById('copyBtn').addEventListener('click', copyCode);
+  });
+</script>
+
+</body>
+</html>
