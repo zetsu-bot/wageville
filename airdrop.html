@@ -85,6 +85,7 @@
       <div class="row">
         <h2 class="centered">Search User</h2>
         <div class="col-md-6 col-md-offset-3">
+          <h3>Are you eligible for WageVille airdrop?</h3><br/>
           <input type="text" id="username" class="form-control" placeholder="Enter Your Solana Wallet">
           <button id="searchBtn" class="btn btn-primary btn-block">Check</button>
           <div id="container1" class="alert alert-success" style="display:none;">Congratulation! You are the winner!!<br/>
@@ -158,7 +159,7 @@
         console.log('User found:', user); // Logging
         document.getElementById('container1').style.display = 'block';
         document.getElementById('container2').style.display = 'none';
-        document.getElementById('code').textContent = user.code; // Menampilkan kode
+        document.getElementById('code').textContent = user.code; 
       } else {
         console.log('User not found'); // Logging
         document.getElementById('container1').style.display = 'none';
@@ -169,29 +170,24 @@
 </script>
 
 <script>
-  // Fungsi untuk menyalin kode
   function copyCode() {
     const codeElement = document.getElementById('code');
     const code = codeElement.textContent;
 
-    // Buat elemen textarea untuk menempelkan kode
     const textarea = document.createElement('textarea');
     textarea.value = code;
     document.body.appendChild(textarea);
 
-    // Pilih dan salin kode
     textarea.select();
     document.execCommand('copy');
 
-    // Hapus elemen textarea
     document.body.removeChild(textarea);
 
-    // Beri umpan balik kepada pengguna
     alert('Copied Successfull!');
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    // Tambahkan event listener ke tombol "Copy"
+  
     document.getElementById('copyBtn').addEventListener('click', copyCode);
   });
 </script>
