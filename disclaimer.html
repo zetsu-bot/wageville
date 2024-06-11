@@ -85,17 +85,26 @@
       <div class="row">
         <h2 class="centered">Search User</h2>
         <div class="col-md-6 col-md-offset-3">
-          <h3>Are you eligible for WageVille airdrop?</h3><br/>
-          <input type="text" id="username" class="form-control" placeholder="Enter Your Solana Wallet">
-          <button id="searchBtn" class="btn btn-primary btn-block">Check</button>
-          <div id="container1" class="alert alert-success" style="display:none;">Congratulation! You are the winner!!<br/>
-            <h2>How to Claim</h2><br/>
-            <ul>
-                <li>Join Our Telegram Channel at <a href="https://t.me/wagetoken">WageVille Channel</a></li>
-                <li>Download & Play WageVille Game</li>
-                <li>in the claim button, enter this code: <span id="code"></span>    <button id="copyBtn" class="btn btn-primary btn-sm">Copy</button></li>
-                
-            </ul>
+            <br/><br/>
+            <h1>Disclaimer for Wage Ville : Solana Gaming</h1>
+
+            <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at wageville@gmail.com</p>
+
+            <h2>Disclaimers for Wage Ville : Solana Gaming</h2>
+
+            <p>All the information on this website - wageville.online - is published in good faith and for general information purpose only. Wage Ville : Solana Gaming does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (Wage Ville : Solana Gaming), is strictly at your own risk. Wage Ville : Solana Gaming will not be liable for any losses and/or damages in connection with the use of our website.</p>
+
+            <p>From our website, you can visit other websites by following hyperlinks to such external sites. While we strive to provide only quality links to useful and ethical websites, we have no control over the content and nature of these sites. These links to other websites do not imply a recommendation for all the content found on these sites. Site owners and content may change without notice and may occur before we have the opportunity to remove a link which may have gone 'bad'.</p>
+
+            <p>Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.</p>
+
+            <h2>Consent</h2>
+
+            <p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
+
+            <h2>Update</h2>
+
+            <p>Should we update, amend or make any changes to this document, those changes will be prominently posted here.</p>
             <br/><br/><br/></div>
           <div id="container2" class="alert alert-danger" style="display:none;">You haven't been lucky this time. Visit our official Twitter at <a href="https://x.com/wagetoken">WageVille Twitter</a> and follow other airdrop programs.</div>
         </div>
@@ -135,63 +144,7 @@
 <script type="text/javascript" src="assets/js/smoothscroll.js"></script> 
 <script type="text/javascript" src="assets/js/custom-scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-<script>
-  let whitelist = [];
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Load CSV file
-    Papa.parse('whitelist.csv', {
-      download: true,
-      header: true,
-      complete: function(results) {
-        whitelist = results.data;
-        console.log('Whitelist loaded:', whitelist); // Logging
-      },
-      error: function(error) {
-        console.error('Error loading CSV:', error); // Logging errors
-      }
-    });
-
-    document.getElementById('searchBtn').addEventListener('click', function() {
-      const username = document.getElementById('username').value.trim();
-      const user = whitelist.find(item => item.username === username);
-      console.log('Searching for username:', username); // Logging
-      if (user) {
-        console.log('User found:', user); // Logging
-        document.getElementById('container1').style.display = 'block';
-        document.getElementById('container2').style.display = 'none';
-        document.getElementById('code').textContent = user.code; 
-      } else {
-        console.log('User not found'); // Logging
-        document.getElementById('container1').style.display = 'none';
-        document.getElementById('container2').style.display = 'block';
-      }
-    });
-  });
-</script>
-
-<script>
-  function copyCode() {
-    const codeElement = document.getElementById('code');
-    const code = codeElement.textContent;
-
-    const textarea = document.createElement('textarea');
-    textarea.value = code;
-    document.body.appendChild(textarea);
-
-    textarea.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(textarea);
-
-    alert('Copied Successfull!');
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-  
-    document.getElementById('copyBtn').addEventListener('click', copyCode);
-  });
-</script>
 
 </body>
 </html>
